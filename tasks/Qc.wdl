@@ -111,47 +111,6 @@ task CollectAggregationMetrics {
   }
 }
 
-task ValidateSamFile {
-  input {
-    File input_bam
-    File input_bam_index
-    String report_filename
-    File ref_dict
-    File ref_fasta
-    File ref_fasta_index
-    Array[String]? ignore
-    Boolean? is_outlier_data
-    Int preemptible_tries
-    Int memory_multiplier = 1
-  }
-
-  Float ref_size = size(ref_fasta, "GiB") + size(ref_fasta_index, "GiB") + size(ref_dict, "GiB")
-  Int disk_size = ceil(size(input_bam, "GiB") + ref_size) + 20
-
-  Int memory_size = ceil(7 * memory_multiplier)
-  Int java_memory_size = (memory_size - 1) * 1000
-
-  command {
-    java -Xms~{java_memory_size}m -jar /usr/picard/picard.jar \
-      ValidateSamFile \
-      INPUT=~{input_bam} \
-      OUTPUT=~{report_filename} \
-      REFERENCE_SEQUENCE=~{ref_fasta} \
-      IGNORE=~{default="null" sep=" IGNORE=" ignore} \
-      MODE=SUMMARY \
-      ~{default='SKIP_MATE_VALIDATION=false' true='SKIP_MATE_VALIDATION=true' false='SKIP_MATE_VALIDATION=false' is_outlier_data} \
-      IS_BISULFITE_SEQUENCED=false
-  }
-  runtime {
-    docker: "us.gcr.io/broad-gotc-prod/picard-cloud:2.21.7"
-    memory: "~{memory_size} GiB"
-    disks: "local-disk " + disk_size + " HDD"
-  }
-  output {
-    File report = "~{report_filename}"
-  }
-}
-
 # Collect raw WGS metrics (commonly used QC thresholds)
 task CollectRawWgsMetrics {
   input {

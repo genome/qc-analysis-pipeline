@@ -55,20 +55,6 @@ workflow SingleSampleQc {
       ref_cache = ref_cache,
       preemptible_tries = preemptible_tries
   }
-  
-  # Validate the BAM or CRAM file
-  call QC.ValidateSamFile as ValidateSamFile {
-    input:
-      input_bam = BuildBamIndex.bam,
-      input_bam_index = BuildBamIndex.bam_index,
-      report_filename = base_name + ".validation_report",
-      ref_dict = ref_dict,
-      ref_fasta = ref_fasta,
-      ref_fasta_index = ref_fasta_index,
-      ignore = ["MISSING_TAG_NM"],
-      is_outlier_data = is_outlier_data,
-      preemptible_tries = preemptible_tries
-   }
 
   # generate a md5
   call QC.CalculateChecksum as CalculateChecksum {
@@ -159,8 +145,6 @@ workflow SingleSampleQc {
 
   # Outputs that will be retained when execution is complete
   output {
-
-    File validation_report = ValidateSamFile.report
 
     File alignment_summary_metrics = CollectAggregationMetrics.alignment_summary_metrics
     File bait_bias_detail_metrics = CollectAggregationMetrics.bait_bias_detail_metrics
