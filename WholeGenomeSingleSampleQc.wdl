@@ -171,5 +171,6 @@ workflow SingleSampleQc {
     File? hs_metrics = CollectHsMetrics.metrics
 
     File input_bam_md5 = CalculateChecksum.md5
+    File input_bam_index = BuildBamIndex.bam_index
   }
 }
