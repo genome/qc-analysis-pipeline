@@ -367,8 +367,10 @@ task CalculateChecksum {
 
   Int disk_size = ceil(size(input_bam, "GiB")) + 20
 
+  String output_name = basename(input_bam)
+
   command {
-    md5sum ~{input_bam} > ~{input_bam}.md5
+    md5sum ~{input_bam} > ~{output_name}.md5
   }
   runtime {
     preemptible: preemptible_tries
@@ -377,6 +379,7 @@ task CalculateChecksum {
     docker: "us.gcr.io/gcp-runtimes/ubuntu_16_0_4:latest"
   }
   output {
-    File md5 = "~{input_bam}.md5"
+    File md5 = "~{output_name}.md5"
+    String md5_hash = sub(read_string(md5), " .+$", "")
   }
 }
