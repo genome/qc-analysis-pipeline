@@ -488,6 +488,69 @@ task RxIdentifier {
   }
 }
 
+task RyIdentifier {
+  input {
+    File idxstats
+    String sample_id
+    Int preemptible_tries
+  }
+
+  Int disk_size = ceil(size(idxstats, "GiB")) + 20
+  String output_name = basename(idxstats) + ".Ry"
+
+# Ry_identifier based on:
+# Pontus Skoglund, Jan Storå, Anders Götherström, Mattias Jakobsson,
+# Accurate sex identification of ancient human remains using DNA shotgun sequencing
+# https://doi.org/10.1016/j.jas.2013.07.004.
+  command <<<
+    R <<SCRIPT
+        sample_id <- "~{sample_id}"
+        XX_threshold <- 0.016 #be sure this is less than the XY_threshold!
+        XY_threshold <- 0.075
+
+        idxstats <- read.table("~{idxstats}",header=F,nrows=24,row.names=1)
+
+        chrXcount <- idxstats[23,2]
+        chrYcount <- idxstats[24,2]
+
+        c2 <- c(as.numeric(idxstats[,2]))
+        total_count <- sum(c2)
+
+        n <- chrYcount+chrXcount
+        Ry <- chrYcount/n
+        SE <- sqrt((Ry*(1.0-Ry))/n)
+        confinterval <- 1.96*SE
+
+        result <- 'NA'
+        if (Ry == 0.0) {
+            result <- 'consistent with XX'
+        } else if (Ry+confinterval < XX_threshold) {
+            result <- 'XX'
+        } else if (Ry-confinterval > XY_threshold) {
+            result <- 'XY'
+        } else if (Ry-confinterval > XX_threshold & Ry+confinterval > XY_threshold) {
+            result <- 'consistent with XY but not XX'
+        } else if (Ry-confinterval < XX_threshold & Ry+confinterval < XY_threshold) {
+            result <- 'consistent with XX but not XY'
+        } else {
+            result <- 'Not Assigned'
+        }
+        write(paste(sample_id,total_count,chrXcount+chrYcount,chrYcount,Ry,SE,confinterval,result, sep = "\t"), file = "~{output_name}", append=FALSE)
+    SCRIPT
+  >>>
+
+  runtime {
+    docker: "us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:3.14.0"
+    memory: "1 GiB"
+    disks: "local-disk " + disk_size + " HDD"
+    preemptible: preemptible_tries
+  }
+  output {
+    File ry_result = "~{output_name}"
+    String ry_value = read_tsv(output_name)[0][7]
+  }
+}
+
 
 # Notes on the contamination estimate:
 # The contamination value is read from the FREEMIX field of the selfSM file output by verifyBamId

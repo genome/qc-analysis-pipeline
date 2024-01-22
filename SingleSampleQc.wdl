@@ -73,6 +73,13 @@ workflow SingleSampleQc {
       preemptible_tries = preemptible_tries
   }
 
+  call QC.RyIdentifier as RyIdentifier {
+    input:
+      idxstats = BamIndexStats.idxstats,
+      sample_id = base_name,
+      preemptible_tries = preemptible_tries
+  }
+
   # Validate the BAM or CRAM file
   call QC.ValidateSamFile as ValidateSamFile {
     input:
@@ -244,6 +251,8 @@ workflow SingleSampleQc {
     File input_bam_idxstats = BamIndexStats.idxstats
     File input_bam_rx_result = RxIdentifier.rx_result
     String input_bam_rx_value = RxIdentifier.rx_value
+    File input_bam_ry_result = RyIdentifier.ry_result
+    String input_bam_ry_value = RyIdentifier.ry_value
 
     File evaluated_metrics_file = EvaluateMetrics.evaluated_metrics_file
     Map[String, String] evaluated_metrics = EvaluateMetrics.evaluated_metrics
