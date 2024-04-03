@@ -10,9 +10,9 @@
   "SingleSampleQc.ref_fasta_index": "gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
   "SingleSampleQc.coverage_interval_list": "gs://gcp-public-data--broad-references/hg38/v0/wgs_coverage_regions.hg38.interval_list",
   "SingleSampleQc.preemptible_tries": 3,
-  "SingleSampleQc.is_wgs": "true",
+  "SingleSampleQc.is_wgs": true,
   "SingleSampleQc.evaluation_thresholds": "https://raw.githubusercontent.com/genome/qc-analysis-pipeline/master/threshold_files/anvil_wgs_thresholds.tsv",
-  "SingleSampleQc.CollectRawWgsMetrics.memory_multiplier": 4,
+  "SingleSampleQc.CollectRawWgsMetrics.memory_multiplier": 1,
   "SingleSampleQc.CollectHsMetrics.memory_multiplier": 2,
-  "SingleSampleQc.ValidateSamFile.memory_multiplier": 2
+  "SingleSampleQc.ValidateSamFile.memory_multiplier": 1
 }

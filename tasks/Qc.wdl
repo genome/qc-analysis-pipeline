@@ -351,7 +351,7 @@ task BuildBamIndex {
   
   command {
     # Link the BAM/CRAM to a harmonized name and path
-    ln -s ~{input_bam} ~{bam_link}
+    cp ~{input_bam} ~{bam_link}
 
     # build the reference sequence cache
     tar -zxf ~{ref_cache}
