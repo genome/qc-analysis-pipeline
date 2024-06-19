@@ -103,12 +103,7 @@ Data submitters should establish the specific metrics and thresholds for determi
 
 Data Submitters are responsible for running the WDL on their data to generate the QC metrics.  If this workflow is given a threshold file, then it can report QC status outputs directly to the AnVIL data table as additional columns. AnVIL Data Processing Working Group has also created QC aggregator Jupyter notebook. Once QC status criteria have been determined, the thresholds can be modified in the notebook. The criteria is used to assign QC status of pass or fail. If a sample fails multiple times, it is assigned No QC under QC status.
 
-Video - Walkthrough of WGS QC Processing
-
-[![Video - Walkthrough of WGS QC Processing](https://raw.githubusercontent.com/genome/qc-analysis-pipeline/master/images/AnVILonDockstore_still.png)](https://youtu.be/WLpnoXySuIw "Walkthrough of WGS QC Processing - Click to Watch")If the current version of the example JSON is used as in this video, the chosen threshold file should be uploaded to the workspace files and the `gs://` path should be filled in as an input instead of pointing to the `https://` URL in this repo.  Thereafter, the outputs tab of the workflow can be used to assign which results from the workflow should be added as columns to the data table.  See also the Terra dcoumentation on [writing workflow outputs to the data table](https://support.terra.bio/hc/en-us/articles/4500420806299-Writing-workflow-outputs-to-the-data-table).
-
-There is also a [text walkthrough for WGS processing on AnVIL](/docs/anvil_walkthrough.md) that uses the NA12878 data listed in the [example JSON for WGS](SingleSampleQc.json).
-
+There is a [text walkthrough for WGS processing on AnVIL](/docs/anvil_walkthrough.md) that uses the NA12878 data listed in the [example JSON for WGS](SingleSampleQc.json).
 
 Sample QC Results Table
 
@@ -117,3 +112,11 @@ Sample QC Results Table
 #### Exome QC Processing
 
 There is an additional [example JSON for exome](SingleSampleQc.exome.json).  It should have all the inputs necessary to run aside from the input BAM, sample name, and threshold file.  After supplying those inputs, the workflow can be run just as in the WGS case and outputs can simiarly be written to the data table.
+
+### Additional resources
+
+Video - Walkthrough of WGS QC Processing
+
+[![Video - Walkthrough of WGS QC Processing](https://raw.githubusercontent.com/genome/qc-analysis-pipeline/master/images/AnVILonDockstore_still.png)](https://youtu.be/WLpnoXySuIw "Walkthrough of WGS QC Processing - Click to Watch")If the current version of the example JSON is used as in this video, the chosen threshold file should be uploaded to the workspace files and the `gs://` path should be filled in as an input instead of pointing to the `https://` URL in this repo.  Thereafter, the outputs tab of the workflow can be used to assign which results from the workflow should be added as columns to the data table.  See also the Terra dcoumentation on [writing workflow outputs to the data table](https://support.terra.bio/hc/en-us/articles/4500420806299-Writing-workflow-outputs-to-the-data-table).
+
+[Video - How to combine data across workspaces](https://www.youtube.com/watch?v=1vz4kupdkms) also includes an example of running the QC workflow.
