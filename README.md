@@ -107,6 +107,9 @@ Video - Walkthrough of WGS QC Processing
 
 [![Video - Walkthrough of WGS QC Processing](https://raw.githubusercontent.com/genome/qc-analysis-pipeline/master/images/AnVILonDockstore_still.png)](https://youtu.be/WLpnoXySuIw "Walkthrough of WGS QC Processing - Click to Watch")If the current version of the example JSON is used as in this video, the chosen threshold file should be uploaded to the workspace files and the `gs://` path should be filled in as an input instead of pointing to the `https://` URL in this repo.  Thereafter, the outputs tab of the workflow can be used to assign which results from the workflow should be added as columns to the data table.  See also the Terra dcoumentation on [writing workflow outputs to the data table](https://support.terra.bio/hc/en-us/articles/4500420806299-Writing-workflow-outputs-to-the-data-table).
 
+There is also a [text walkthrough for WGS processing on AnVIL](/docs/anvil_walkthrough.md) that uses the NA12878 data listed in the [example JSON for WGS](SingleSampleQc.json).
+
+
 Sample QC Results Table
 
 ![QC results in a 1000 Genomes workspace](https://raw.githubusercontent.com/genome/qc-analysis-pipeline/master/images/qc-results.png)
