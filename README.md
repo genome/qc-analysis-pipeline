@@ -12,13 +12,13 @@ The figure below shows the read-level data processing and ingestion process, inc
 
 [WDL Analysis Reseach Pipelines](https://broadinstitute.github.io/warp/docs/get-started), from the Broad Institute Data Sciences Platform and collaborators, provides an AnVIL [Whole Genome Analysis Pipeline](https://anvil.terra.bio/#workspaces/warp-pipelines/Whole-Genome-Analysis-Pipeline) Example Workspace to demonstrate a Functional Equivalence pipeline and Joint Genotyping for WGS data. For additional details on Functional Equivalence including a DRAGEN FE comparison, please see the Broad [Functional Equivalence workspace](https://anvil.terra.bio/#workspaces/broad-firecloud-dsde-methods/FunctionalEquivalence).
 
-![AnVIL Read-Level Data Ingestion and Processing](https://raw.githubusercontent.com/genome/qc-analysis-pipeline/master/images/BGA-84_read-level-data-processing_v1a.png)
+![AnVIL Read-Level Data Ingestion and Processing](images/BGA-84_read-level-data-processing_v1a.png)
 
 #### Summary
 
 The following figure shows the steps of the workflow with approximate costs of executing each step in a cloud-hosted environment. 
 
-![Single-Sample QC Workflow](https://raw.githubusercontent.com/genome/qc-analysis-pipeline/master/images/BGA-84_best-practice-QC_v1b.png)
+![Single-Sample QC Workflow](images/BGA-84_best-practice-QC_v1b.png)
 
 #### Requirements/expectations
 - Human paired-end sequencing data in aligned BAM or CRAM format
@@ -107,7 +107,7 @@ There is a [text walkthrough for WGS processing on AnVIL](/docs/anvil_walkthroug
 
 Sample QC Results Table
 
-![QC results in a 1000 Genomes workspace](https://raw.githubusercontent.com/genome/qc-analysis-pipeline/master/images/qc-results.png)
+![QC results in a 1000 Genomes workspace](images/qc-results.png)
 
 #### Exome QC Processing
 
@@ -117,6 +117,6 @@ There is an additional [example JSON for exome](SingleSampleQc.exome.json).  It 
 
 Video - Walkthrough of WGS QC Processing
 
-[![Video - Walkthrough of WGS QC Processing](https://raw.githubusercontent.com/genome/qc-analysis-pipeline/master/images/AnVILonDockstore_still.png)](https://youtu.be/WLpnoXySuIw "Walkthrough of WGS QC Processing - Click to Watch")If the current version of the example JSON is used as in this video, the chosen threshold file should be uploaded to the workspace files and the `gs://` path should be filled in as an input instead of pointing to the `https://` URL in this repo.  Thereafter, the outputs tab of the workflow can be used to assign which results from the workflow should be added as columns to the data table.  See also the Terra dcoumentation on [writing workflow outputs to the data table](https://support.terra.bio/hc/en-us/articles/4500420806299-Writing-workflow-outputs-to-the-data-table).
+[![Video - Walkthrough of WGS QC Processing](images/AnVILonDockstore_still.png)](https://youtu.be/WLpnoXySuIw "Walkthrough of WGS QC Processing - Click to Watch")If the current version of the example JSON is used as in this video, the chosen threshold file should be uploaded to the workspace files and the `gs://` path should be filled in as an input instead of pointing to the `https://` URL in this repo.  Thereafter, the outputs tab of the workflow can be used to assign which results from the workflow should be added as columns to the data table.  See also the Terra dcoumentation on [writing workflow outputs to the data table](https://support.terra.bio/hc/en-us/articles/4500420806299-Writing-workflow-outputs-to-the-data-table).
 
 [Video - How to combine data across workspaces](https://www.youtube.com/watch?v=1vz4kupdkms) also includes an example of running the QC workflow.
