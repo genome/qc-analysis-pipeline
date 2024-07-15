@@ -115,7 +115,7 @@ There is an additional [example JSON for exome](SingleSampleQc.exome.json).  It 
 
 ### Additional resources
 
-Video - AnVIL Demo
+Video - AnVIL Demos: QC Analysis Pipeline
 
 [![Video - AnVIL Demos: QC Analysis Pipeline](https://img.youtube.com/vi/IB3c-6UpocI/0.jpg)](https://youtu.be/IB3c-6UpocI "AnVIL Demo: QC Analysis Pipeline - Click to Watch")
 
@@ -123,4 +123,6 @@ Video - Walkthrough of WGS QC Processing
 
 [![Video - Walkthrough of WGS QC Processing](images/AnVILonDockstore_still.png)](https://youtu.be/WLpnoXySuIw "Walkthrough of WGS QC Processing - Click to Watch")If the current version of the example JSON is used as in this video, the chosen threshold file should be uploaded to the workspace files and the `gs://` path should be filled in as an input instead of pointing to the `https://` URL in this repo.  Thereafter, the outputs tab of the workflow can be used to assign which results from the workflow should be added as columns to the data table.  See also the Terra dcoumentation on [writing workflow outputs to the data table](https://support.terra.bio/hc/en-us/articles/4500420806299-Writing-workflow-outputs-to-the-data-table).
 
-[Video - How to combine data across workspaces](https://www.youtube.com/watch?v=1vz4kupdkms) also includes an example of running the QC workflow.
+Video - How to combine data across workspaces
+
+[![Video - How to combine data across workspaces](https://img.youtube.com/vi/1vz4kupdkms/0.jpg)](https://www.youtube.com/watch?v=1vz4kupdkms) also includes an example of running the QC workflow.
