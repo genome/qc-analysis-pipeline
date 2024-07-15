@@ -115,11 +115,17 @@ There is an additional [example JSON for exome](SingleSampleQc.exome.json).  It 
 
 ### Additional resources
 
+The following thumbnails are links to YouTube videos that may be helpful for seeing this workflow in action.
+
 #### Video - AnVIL Demos: QC Analysis Pipeline
+
+A demo of the pipeline from June 2024
 
 [![Video - AnVIL Demos: QC Analysis Pipeline](https://img.youtube.com/vi/IB3c-6UpocI/0.jpg)](https://youtu.be/IB3c-6UpocI "AnVIL Demo: QC Analysis Pipeline - Click to Watch")
 
 #### Video - Walkthrough of WGS QC Processing
+
+An older walkthrough using this pipeline
 
 [![Video - Walkthrough of WGS QC Processing](https://img.youtube.com/vi/WLpnoXySuIw/0.jpg)](https://youtu.be/WLpnoXySuIw "Walkthrough of WGS QC Processing - Click to Watch")
 
@@ -127,6 +133,6 @@ If the current version of the example JSON is used as in this video, the chosen 
 
 #### Video - How to combine data across workspaces
 
-This video also includes an example of running the QC workflow.
+An example of running the QC workflow in the context of doing other work
 
 [![Video - How to combine data across workspaces](https://img.youtube.com/vi/1vz4kupdkms/0.jpg)](https://www.youtu.be/1vz4kupdkms)
